@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AjaxTest</title>
+
+    @*Scripts.Render("~/bundles/modernizr")
+    *@
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+
+    <script>
+        $(function () {
+
+            var param = {
+                str1: "Hello",
+                str2: "World!!"
+            };
+
+            $.ajax({
+                url: '@Url.Action("Test","Sample")',
+                type: "POST",
+                data: param
+            }).done(function (data, status, xhr) {
+                // 正常
+                for (var key in data) {
+                    alert(key + " " + data[key]);
+                }
+            }).fail(function (xhr, status, error) {
+                // 異常
+                alert(error);
+            }).always(function (data, status, xhr) {
+                // 常に
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <div>
+        AjaxTest
+        ダイアログ表示
+    </div>
+</body>
+</html>

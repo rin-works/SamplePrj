@@ -1,0 +1,71 @@
+﻿@model MvcSample.Models.UserDepart
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.First().DepartmentId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID, controller = "Users" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID, controller = "Users" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID, controller = "Users" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.First().DepartmentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.First().DepartmentName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Department)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID, controller = "Departments" }) |
+                @Html.ActionLink("Details", "Details", "Departments", new { id = item.ID, controller = "Departments" }) |
+                @Html.ActionLink("Delete", "Delete", "Departments", new { id = item.ID, controller = "Departments" })
+            </td>
+        </tr>
+    }
+
+</table>
+
